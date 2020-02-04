@@ -10,10 +10,11 @@ namespace singleplayer
     {
 
         //getting the game manager
-        private static SP_GM gameManager = new SP_GM();
+        /*
+        public static SP_GM manager;
         public static SP_GM getManager()
         {
-            return gameManager;
+            return manager;
         }
         public void register(MonoBehaviour thing)
         {
@@ -39,6 +40,7 @@ namespace singleplayer
                 max = underling.left();
             }
         }
+        // */
 
         public SP_Player player;
         public SP_Cam cam;
@@ -47,47 +49,62 @@ namespace singleplayer
         public SP_CM underling;
 
         public Text scoreboard;
-        private int score, max;
+        private int points, max;
 
-
+        private int announcetimer;
 
         // Start is called before the first frame update
         void Start()
         {
-            score = 0;
+            points = 0;
+            updateboard();
+            player.activate();
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            
         }
 
         public override void win()
         {
             player.deactivate();
+            timer.stop();
             victorytext.sendVictoryMessage(timer.getTime());
         }
         public override void timeout()
         {
             player.deactivate();
-            if (collectables == 12)
+            if (points == 12)
                 victorytext.sendVictoryMessage(timer.getTime());
             else
-                victorytext.sendDefeatMessage("You lost with only " + collectables + " / 12!");
+                victorytext.sendDefeatMessage("You lost with only " + points + " / " + max + "!");
+        }
+        public override void announce(string s)
+        {
+            victorytext.sendMessage(s);
         }
 
+        public void setMax(int i)
+        {
+            max = i;
+        }
         public void updateboard()
         {
-            scoreboard.text = "Score: " + score + " / " + underling.;
+            scoreboard.text = "Score: " + points + " / " + max;
         }
         public void score(Collider c)
         {
-            updateboard();
-
-            if (collectables == 12)
+            if (underling.pickup(c))
             {
-                win();
+                points++;
+                updateboard();
+
+                if (points == max)
+                {
+                    win();
+                }
             }
         }
     }

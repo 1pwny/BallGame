@@ -13,6 +13,10 @@ namespace singleplayer
         void Start()
         {
             offset = transform.position - character.transform.position;
+
+            /*
+            SP_GM.getManager().register(this);
+            // */
         }
 
         // Update is called once per frame

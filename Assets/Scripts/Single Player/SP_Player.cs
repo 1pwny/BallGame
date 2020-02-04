@@ -11,7 +11,10 @@ namespace singleplayer
 
         protected override void init()
         {
+            /*
             manager = SP_GM.getManager();
+            manager.register(this);
+            // */
         }
 
         protected override void OnTriggerEnter(Collider other)

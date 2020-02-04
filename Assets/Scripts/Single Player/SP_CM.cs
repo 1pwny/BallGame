@@ -8,14 +8,9 @@ namespace singleplayer
     public class SP_CM : PickupManager
     {
 
-        SP_GM overlord;
+        public SP_GM manager;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            overlord = SP_GM.getManager();
-            overlord.register(this);
-        }
+        
 
         public int left()
         {
@@ -24,7 +19,8 @@ namespace singleplayer
 
         protected override void initCollectibles()
         {
-            
+            manager.setMax(collectibles.Count);
+            manager.updateboard();
         }
 
         // Update is called once per frame

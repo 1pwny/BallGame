@@ -6,31 +6,26 @@ namespace Basics
 {
     public abstract class PickupManager : MonoBehaviour
     {
-        protected HashSet<GameObject> collectibles;
+        public HashSet<GameObject> collectibles;
+        public GameObject[] cols;
 
         // Start is called before the first frame update
         void Start()
         {
-            collectibles = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag("Collectable"));
+            //collectibles = new HashSet<GameObject>(GameObject.FindGameObjectsWithTag("Collectable"));
+            collectibles = new HashSet<GameObject>(cols);
             initCollectibles();
         }
 
         protected abstract void initCollectibles();
 
-        // Update is called once per frame
-        void LateUpdate()
-        {
-            if (total == collected)
-                overlord.win();
-        }
-
         //register pickup
-        public bool pickup(GameObject go)
+        public bool pickup(Collider go)
         {
-            if(collectibles.Contains(go))
+            if(collectibles.Contains(go.gameObject))
             {
-                go.SetActive(false);
-                collectibles.Remove(go);
+                go.gameObject.SetActive(false);
+                collectibles.Remove(go.gameObject);
                 return true;
             }
 

@@ -20,6 +20,6 @@ namespace Basics
 
         public abstract void win();
         public abstract void timeout();
-
+        public abstract void announce(string s);
     }
 }

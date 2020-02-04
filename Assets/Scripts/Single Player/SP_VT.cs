@@ -8,10 +8,7 @@ namespace singleplayer
 
     public class SP_VT : VictoryText
     {
-        public override void sendVictoryMessage()
-        {
-            base.sendVictoryMessage();
-        }
+        
 
         public void sendVictoryMessage(int time)
         {

@@ -17,7 +17,7 @@ namespace Basics
         protected void Start()
         {
             rb = GetComponent<Rigidbody>();
-            init();
+            //init();
         }
         protected abstract void init();
 
