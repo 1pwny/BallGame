@@ -17,7 +17,9 @@ namespace Basics
         protected void Start()
         {
             rb = GetComponent<Rigidbody>();
+            init();
         }
+        protected abstract void init();
 
         // Update is called once per frame
         protected void FixedUpdate()
@@ -33,17 +35,7 @@ namespace Basics
             }
         }
 
-        protected abstract void score();
-        
-
-        protected void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("Collectable"))
-            {
-                other.gameObject.SetActive(false);
-                score();
-            }
-        }
+        protected abstract void OnTriggerEnter(Collider other);
 
         public void deactivate()
         {

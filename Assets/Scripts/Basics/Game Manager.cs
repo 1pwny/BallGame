@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Basics
 {
-    public abstract class Manager : MonoBehaviour
+    public abstract class GM : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()
