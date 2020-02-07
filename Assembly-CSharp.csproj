@@ -68,12 +68,21 @@
     <Compile Include="Assets\Scripts\Basics\Spinner.cs" />
     <Compile Include="Assets\Scripts\Basics\Timer.cs" />
     <Compile Include="Assets\Scripts\Basics\VictoryText.cs" />
+    <Compile Include="Assets\Scripts\KeyBinds.cs" />
+    <Compile Include="Assets\Scripts\Overlord.cs" />
+    <Compile Include="Assets\Scripts\Selection Screen\BC.cs" />
+    <Compile Include="Assets\Scripts\Selection Screen\DataController.cs" />
     <Compile Include="Assets\Scripts\Single Player\SP_Cam.cs" />
     <Compile Include="Assets\Scripts\Single Player\SP_CM.cs" />
     <Compile Include="Assets\Scripts\Single Player\SP_GM.cs" />
     <Compile Include="Assets\Scripts\Single Player\SP_Player.cs" />
     <Compile Include="Assets\Scripts\Single Player\SP_Timer.cs" />
     <Compile Include="Assets\Scripts\Single Player\SP_VT.cs" />
+    <Compile Include="Assets\Scripts\Two Player\TP_CM.cs" />
+    <Compile Include="Assets\Scripts\Two Player\TP_GM.cs" />
+    <Compile Include="Assets\Scripts\Two Player\TP_Player.cs" />
+    <Compile Include="Assets\Scripts\Two Player\TP_Timer.cs" />
+    <Compile Include="Assets\Scripts\Two Player\TP_VT.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/sammy/Documents/College/2019-2020/Animation/BallGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

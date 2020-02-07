@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collectable
   - ColManager
+  - PlayerSelect
+  - Wall
   layers:
   - Default
   - TransparentFX

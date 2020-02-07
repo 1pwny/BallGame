@@ -49,16 +49,38 @@ namespace singleplayer
         public SP_CM underling;
 
         public Text scoreboard;
-        private int points, max;
+        private int points, max, penalties;
 
         private int announcetimer;
+
+        public Button restart, menu;
 
         // Start is called before the first frame update
         void Start()
         {
             points = 0;
+            penalties = 0;
             updateboard();
             player.activate();
+
+            restart.gameObject.SetActive(false);
+            menu.gameObject.SetActive(false);
+            restart.onClick.AddListener(reloadStage);
+            menu.onClick.AddListener(loadMenu);
+        }
+
+        public void reloadStage()
+        {
+            Overlord.changeStage(1);
+        }
+        public void loadMenu()
+        {
+            Overlord.changeStage(0);
+        }
+        void showEndButtons()
+        {
+            restart.gameObject.SetActive(true);
+            menu.gameObject.SetActive(true);
         }
 
         // Update is called once per frame
@@ -72,6 +94,7 @@ namespace singleplayer
             player.deactivate();
             timer.stop();
             victorytext.sendVictoryMessage(timer.getTime());
+            showEndButtons();
         }
         public override void timeout()
         {
@@ -79,11 +102,18 @@ namespace singleplayer
             if (points == 12)
                 victorytext.sendVictoryMessage(timer.getTime());
             else
-                victorytext.sendDefeatMessage("You lost with only " + points + " / " + max + "!");
+                victorytext.sendDefeatMessage("You lost with only " + (points-penalties) + " / " + max + "!");
+            showEndButtons();
         }
         public override void announce(string s)
         {
             victorytext.sendMessage(s);
+        }
+
+        public void penalize()
+        {
+            penalties++;
+            updateboard();
         }
 
         public void setMax(int i)
@@ -92,7 +122,7 @@ namespace singleplayer
         }
         public void updateboard()
         {
-            scoreboard.text = "Score: " + points + " / " + max;
+            scoreboard.text = "Score: " + (points-penalties) + " / " + max;
         }
         public void score(Collider c)
         {
